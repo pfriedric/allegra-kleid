@@ -24,9 +24,9 @@ def size_status(territory):
 def notify(topic, territory, status):
     req = urllib.request.Request(
         f"https://ntfy.sh/{topic}",
-        data=f"EU 34 is {status} at Next {territory}. Buy now!".encode(),
+        data=f"Navy EU 34 is {status} at Next {territory}. Buy now!".encode(),
         headers={
-            "Title": "Navy cape dress is back!",
+            "Title": "Kleid ist in stock!",
             "Priority": "urgent",
             "Tags": "dress,rotating_light",
             "Click": STORES[territory],
