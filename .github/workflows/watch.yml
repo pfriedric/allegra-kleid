@@ -1,7 +1,8 @@
 name: Watch dress stock
 
 on:
-  schedule: every 5m  # - cron: "*/5 * * * *"  # GitHub runs this roughly every 5-15 minutes
+  schedule:
+  - cron: "1/5 * * * *"  # GitHub runs this roughly every 5-15 minutes
   workflow_dispatch:
 
 jobs:
