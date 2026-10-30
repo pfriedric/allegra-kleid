@@ -9,8 +9,18 @@ jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 3
+    permissions:
+      contents: write  # Lets the job commit state.json
     steps:
       - uses: actions/checkout@v6
       - run: python3 watch.py
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+      - name: Save stock state
+        run: |
+          git add state.json
+          git diff --cached --quiet && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update stock state"
+          git push
